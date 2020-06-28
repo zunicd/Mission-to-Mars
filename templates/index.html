@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+</head>
+
+<body class="bg-light" style="font-size:15px;font-weight: 500">
+  <!-- CONTAINER -->
+  <div class="container bg-light px-4">
+
+    <!-- JUMBOTRON -->
+    <div class="jumbotron text-center p-3">
+      <h1 class="display-4" style="font-weight: 600;">Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div> <!-- /JUMBOTRON -->
+
+    <!-- 1st ROW -->
+    <div class="row">
+
+      <!-- MARS NEWS -->
+      <div class="col-md-12">
+        <h2>Latest Mars News</h2>
+        <h4>{{ mars.news_title }}</h4>
+        <p>{{ mars.news_paragraph }}</p>
+      </div> <!-- /MARS NEWS-->
+    </div> <!-- /1st ROW -->
+
+    <!-- 2nd ROW -->
+    <div class='row my-3'>
+
+      <!-- LEFT COLUMN: FEATURED MARS IMAGE -->
+      <div class='col-md-7'>
+        <h2>Featured Mars Image</h2>
+        <img src="{{ mars.featured_image }}" class='img-fluid w-100' alt="Mars Featured Image">
+      </div> <!-- /LEFT COLUMN: FEATURED MARS IMAGE -->
+
+      <!-- RIGHT COLUMN -->
+      <div class="col-md-5 pr-0">
+
+        <!-- MARS WEATHER -->
+        <div class="col-md-12">
+          <div class="card border">
+            <div class="card-body">
+              <h4 class='card-title'>Current Weather on Mars</h4>
+              <p class='card-text'>{{ mars.weather }}</p>
+            </div>
+          </div>
+        </div> <!-- /MARS WEATHER -->
+
+        <!-- MARS FACTS -->
+        <div class='col-md-12 mt-4'>
+          <div class="card border">
+            <div class="card-body">
+              <h4 class='card-title'>Mars Facts</h4>
+              <p class='card-text'>{{ mars.facts | safe}}</p>
+            </div>
+          </div>
+        </div> <!-- /MARS FACTS -->
+      </div> <!-- /RIGHT COLUMN -->
+    </div> <!-- /2nd ROW -->
+
+    <!-- 3rd ROW -->
+    <div class='row justify-content-center pt-3'>
+
+      <!-- MARS HEMISPHERE -->
+      <div class='col-md-12'>
+        <h2 class="text-center mb-2">Mars Hemispheres</h2>
+        <hr class='mt-n2'>
+      </div>
+
+      {% for hemisphere in mars.hemispheres %}
+      <div class="col-md-5 card border p-1 mx-3 mb-2">
+        <img class='card-img-top' src="{{ hemisphere.img_url }}" alt="{{ hemisphere.title }}">
+        <div class="card-body">
+          <h5 class='card-title ml-n3 mb-n2'>{{ hemisphere.title }}</h5>
+        </div>
+      </div>
+      {% endfor %}
+      <!-- /MARS HEMISPHERE -->
+    </div> <!-- /3rd ROW -->
+
+  </div> <!-- /CONTAINER -->
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
